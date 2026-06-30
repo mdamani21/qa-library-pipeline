@@ -6,7 +6,7 @@ def validate_isbn(isbn):
         return False
 
     # Convert to string (handles integers from pandas)
-    isbn = str(isbn)
+    isbn = str(isbn).strip()
 
     # Remove hyphens
     isbn = isbn.replace("-", "").replace(" ", "")
