@@ -1,12 +1,15 @@
 
+import pytest
+import pandas as pd
 
-        """Example test to demonstrate pytest.
+
+
+
+
+"""Example test to demonstrate pytest.
 
 Copy this pattern for your own tests!
 """
-
-import pytest
-import pandas as pd
 
 
 @pytest.fixture
