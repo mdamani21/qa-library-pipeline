@@ -1,4 +1,3 @@
-
 def validate_isbn(isbn):
     """Validate ISBN-13 format."""
 
@@ -14,7 +13,7 @@ def validate_isbn(isbn):
     # Must be exactly 13 digits
     if len(isbn) != 13 or not isbn.isdigit():
         return False
-    
+
     # Calculate check digit from first 12 digits
     total = 0
     for i in range(12):
@@ -31,18 +30,21 @@ def validate_isbn(isbn):
 
 
 def test_valid_isbn():
-    result = validate_isbn('9780306406157')
+    result = validate_isbn("9780306406157")
     assert result == True
 
+
 def test_invalid_isbn():
-    result = validate_isbn('not-an-isbn')
+    result = validate_isbn("not-an-isbn")
     assert result == False
 
+
 def test_wrong_length():
-    result = validate_isbn('123456789')
+    result = validate_isbn("123456789")
     assert result == False
+
 
 def test_invalid_check_digit():
     # valid isbn: 9780306406157
-    result = validate_isbn('9780306406158')
+    result = validate_isbn("9780306406158")
     assert result == False

@@ -7,7 +7,7 @@ All functions return new DataFrames without modifying the input.
 
 # Uncomment when needed:
 import pandas as pd
-from typing import List, Optional
+# from typing import List, Optional
 
 import logging
 
@@ -30,7 +30,7 @@ def remove_duplicates(df, subset=None):
     df = df.copy()  # Work on a copy!
 
     initial_rows = len(df)
-    df = df.drop_duplicates(subset=subset, keep='first')
+    df = df.drop_duplicates(subset=subset, keep="first")
     removed = initial_rows - len(df)
 
     if removed > 0:
@@ -41,7 +41,7 @@ def remove_duplicates(df, subset=None):
     return df
 
 
-def handle_missing_values(df, strategy='drop', fill_value=None, columns=None):
+def handle_missing_values(df, strategy="drop", fill_value=None, columns=None):
     """Handle missing values in DataFrame.
 
     Args:
@@ -66,20 +66,22 @@ def handle_missing_values(df, strategy='drop', fill_value=None, columns=None):
 
     initial_rows = len(df)
 
-    if strategy == 'drop':
+    if strategy == "drop":
         df = df.dropna(subset=target_cols)
-        
-        print(f"Missing Values - Dropped {initial_rows - len(df)} rows with missing values")
+
+        print(
+            f"Missing Values - Dropped {initial_rows - len(df)} rows with missing values"
+        )
         logger.info(f"Dropped {initial_rows - len(df)} rows with missing values")
 
-    elif strategy == 'fill':
+    elif strategy == "fill":
         if fill_value is None:
             raise ValueError("fill_value must be provided when strategy='fill'")
         df[target_cols] = df[target_cols].fillna(fill_value)
         print(f"Missing Values - Filled missing values with {fill_value}")
         logger.info(f"Filled missing values with {fill_value}")
 
-    elif strategy == 'forward_fill':
+    elif strategy == "forward_fill":
         df[target_cols] = df[target_cols].ffill()
         print("Missing Values - Forward filled missing values")
         logger.info("Forward filled missing values")
@@ -90,7 +92,7 @@ def handle_missing_values(df, strategy='drop', fill_value=None, columns=None):
     return df
 
 
-def standardize_dates(df, date_columns, date_format='%Y-%m-%d'):
+def standardize_dates(df, date_columns, date_format="%Y-%m-%d"):
     """Standardize date columns to consistent format.
 
     Args:
@@ -113,7 +115,7 @@ def standardize_dates(df, date_columns, date_format='%Y-%m-%d'):
             continue
 
         try:
-            df[col] = pd.to_datetime(df[col], errors='coerce')
+            df[col] = pd.to_datetime(df[col], errors="coerce")
             print(f"standardize_dates - Standardized dates in column: {col}")
             logger.info(f"Standardized dates in column: {col}")
         except Exception as e:
