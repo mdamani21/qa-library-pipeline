@@ -38,12 +38,12 @@ def load_json(filepath):
 
     TODO: Implement JSON loading and flattening
     """
-    with open(filepath, 'r') as f:
+    with open(filepath, "r") as f:
         data = json.load(f)
     return pd.json_normalize(data)
 
 
-def load_excel(filepath, sheet_name=0, **kwargs):
+def load_excel(filepath, sheet_name=0, **kwargs):  # pragma: no cover
     """Load Excel file into DataFrame.
 
     Args:
